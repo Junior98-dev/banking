@@ -7,6 +7,7 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { UserAshboardComponent } from './pages/user-ashboard/user-ashboard.component';
+import { TransactionComponent } from './pages/transaction/transaction.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { UserAshboardComponent } from './pages/user-ashboard/user-ashboard.compo
     MenuComponent,
     LoginComponent,
     RegisterComponent,
-    UserAshboardComponent
+    UserAshboardComponent,
+    TransactionComponent
   ],
   imports: [
     BrowserModule,
