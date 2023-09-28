@@ -9,6 +9,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { UserAshboardComponent } from './pages/user-ashboard/user-ashboard.component';
 import { TransactionComponent } from './pages/transaction/transaction.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { NewTransactionComponent } from './pages/new-transaction/new-transaction.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
     RegisterComponent,
     UserAshboardComponent,
     TransactionComponent,
-    ContactsComponent
+    ContactsComponent,
+    NewTransactionComponent
   ],
   imports: [
     BrowserModule,
