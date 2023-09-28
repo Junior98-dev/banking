@@ -1,1 +1,40 @@
-<p>new-transaction works!</p>
+<div class="p-2">
+    <h3 class="mb-4">Nouvelle transaction</h3>
+
+    <div class="card p-3">
+        <h3>Votre solde est de : 21 560€</h3>
+        <div class="mb-1">
+            <label for="Transaction-Type"></label>
+            <select name="" id="" class="form-select" aria-label="Default select example">
+                <option selected>Type de transaction</option>
+                <option value="1">Transfert</option>
+                <option value="2">Dépot</option>
+            </select>
+        </div>
+        <div class="mb-1">
+            <label for="">Choix de contact</label>
+            <select name="" id="" class="form-select" aria-label="Default select example">
+                <option selected>Destinataire</option>
+                <option value="1">Transfert</option>
+                <option value="2">Dépot</option>
+            </select>
+        </div>
+        <div class="mb-form mb-1">
+            <label for="amount">Montant</label>
+            <input type="number" class="form-control" placeholder="ex : 500€" />
+        </div>
+        <div class="mb-form mb-3">
+            <label for="IBAN">IBAN</label>
+            <input type="password" id="form2Example2" class="form-control" placeholder="AB12 9856 4712 1234" />
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-link">
+                <em class="fas fa-times"></em>&nbsp; Annuler
+            </button>
+            <button type="button" class="btn btn-danger">
+                <em class="fas fa-save"></em>&nbsp; Envoyer
+            </button>
+        </div>
+    </div>
+</div>
