@@ -3,7 +3,7 @@
     <!-- Container wrapper -->
     <div class="container">
       <!-- Navbar brand -->
-      <a class="navbar-brand me-2" href="https://mdbgo.com/">
+      <a class="navbar-brand me-2" [routerLink]="'/' + role">
         <img
           src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
           height="16"
@@ -31,21 +31,24 @@
         <!-- Left links -->
         <ul class="nav nav-pills nav-fill me-auto mb-2 mb-lg-0">
           <li class="nav-item" role="presentation">
-            <a class="nav-link active" data-mdb-toggle="pill">Dashboard</a>
+            <a class="nav-link active" data-mdb-toggle="pill" [routerLink]="'/' + role + '/dashboard/'">dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-mdb-toggle="pill">Mes Transactions</a>
+            <a class="nav-link" data-mdb-toggle="pill" [routerLink]="'/user/my-transaction'" *ngIf="!isAdmin">Mes Transactions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" data-mdb-toggle="pill">Mes Contacts</a>
+            <a class="nav-link" data-mdb-toggle="pill" [routerLink]="'/user/my-contact-list'" *ngIf="!isAdmin">Mes Contacts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-mdb-toggle="pill" [routerLink]="'/admin/customers'" *ngIf="isAdmin">user</a>
           </li>
         </ul>
         <!-- Left links -->
   
         <div class="d-flex align-items-center">
           
-          <button type="button" class="btn btn-primary me-3">
-            nouvelle transaction
+          <button type="button" class="btn btn-primary me-3" [routerLink]="'/user/new-transaction'" *ngIf="!isAdmin">
+            <em class="fas fa-plus"></em>&nbsp; nouvelle transaction
           </button>
          
           <div class="dropdown">
@@ -71,10 +74,10 @@
               aria-labelledby="navbarDropdownMenuAvatar"
             >
               <li>
-                <a class="dropdown-item" href="#">My profile</a>
+                <a class="dropdown-item" [routerLink]="'/' + role +'/profile'">My profile</a>
               </li>
               <li>
-                <a class="dropdown-item" href="#">Se deconnecter</a>
+                <a class="dropdown-item" [routerLink]="'/login'">Se deconnecter</a>
               </li>
             </ul>
           </div>

@@ -9,6 +9,9 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
 import { NewContactComponent } from './pages/new-contact/new-contact.component';
 import { NewTransactionComponent } from './pages/new-transaction/new-transaction.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { MainAdminPageComponent } from './admin/main-admin-page/main-admin-page.component';
+import { ManagerUsersComponent } from './admin/manager-users/manager-users.component';
+import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
 {path: 'login', component: LoginComponent},
@@ -16,14 +19,28 @@ const routes: Routes = [
 {path: 'user',
 component: MainPageComponent,
 children : [
-  {path: 'dashbord', component: UserAshboardComponent},
+  {path: '', redirectTo : 'dashboard', pathMatch: 'full'},
+  {path: 'dashboard', component: UserAshboardComponent},
   {path: 'my-transaction', component: TransactionComponent},
   {path: 'my-contact-list', component: ContactsComponent},
+  {path: 'new-contact', component: NewContactComponent},
   {path: 'new-contact/:idContact', component: NewContactComponent},
   {path: 'new-transaction', component: NewTransactionComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: '', redirectTo: 'UserAshboardComponent', pathMatch: 'full'}
+  
 ]
+},
+
+{path: 'admin',
+component: MainAdminPageComponent,
+children: [
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: 'dashboard', component: AdminDashboardComponent},
+  {path: 'customers', component : ManagerUsersComponent},
+  {path: 'profile', component: ProfileComponent}
+
+]
+
 }
 
 
