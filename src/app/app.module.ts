@@ -16,6 +16,7 @@ import { ManagerUsersComponent } from './admin/manager-users/manager-users.compo
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MainAdminPageComponent } from './admin/main-admin-page/main-admin-page.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -32,13 +33,17 @@ import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard
     ManagerUsersComponent,
     MainPageComponent,
     MainAdminPageComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
