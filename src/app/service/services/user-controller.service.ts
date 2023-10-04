@@ -1,16 +1,14 @@
 /* tslint:disable */
 /* eslint-disable */
-import { HttpClient, HttpContext } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { BaseService } from '../base-service';
 import { ApiConfiguration } from '../api-configuration';
 import { StrictHttpResponse } from '../strict-http-response';
 
-import { delete } from '../fn/user-controller/delete';
-import { Delete$Params } from '../fn/user-controller/delete';
 import { findAll } from '../fn/user-controller/find-all';
 import { FindAll$Params } from '../fn/user-controller/find-all';
 import { findById } from '../fn/user-controller/find-by-id';
@@ -22,6 +20,7 @@ import { Save$Params } from '../fn/user-controller/save';
 import { UserDto } from '../models/user-dto';
 import { valideAccount } from '../fn/user-controller/valide-account';
 import { ValideAccount$Params } from '../fn/user-controller/valide-account';
+import { RequestBuilder } from '../request-builder';
 
 @Injectable({ providedIn: 'root' })
 export class UserControllerService extends BaseService {
@@ -155,7 +154,7 @@ export class UserControllerService extends BaseService {
   }
 
   /** Path part for operation `delete()` */
-  static readonly DeletePath = '/users/delete/{user-id}';
+  static override readonly DeletePath = '/users/delete/{user-id}';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
@@ -163,8 +162,27 @@ export class UserControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  delete$Response(params: Delete$Params, context?: HttpContext): Observable<StrictHttpResponse<void>> {
-    return delete(this.http, this.rootUrl, params, context);
+  delete$Response(params: {
+    'user-id': number;
+    context?: HttpContext
+  }
+): Observable<StrictHttpResponse<void>> {
+
+    const rb = new RequestBuilder(this.rootUrl, BaseService.DeletePath, 'delete');
+    if (params) {
+      rb.path('user-id', params['user-id'], {});
+    }
+
+    return this.http.request(rb.build({
+      responseType: 'text',
+      accept: '*/*',
+      context: params?.context
+    })).pipe(
+      filter((r: any) => r instanceof HttpResponse),
+      map((r: HttpResponse<any>) => {
+        return (r as HttpResponse<any>).clone({ body: undefined }) as StrictHttpResponse<void>;
+      })
+    );
   }
 
   /**
@@ -173,9 +191,14 @@ export class UserControllerService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  delete(params: Delete$Params, context?: HttpContext): Observable<void> {
-    return this.delete$Response(params, context).pipe(
-      map((r: StrictHttpResponse<void>): void => r.body)
+  delete(params: {
+    'user-id': number;
+    context?: HttpContext
+  }
+): Observable<void> {
+
+    return this.delete$Response(params).pipe(
+      map((r: StrictHttpResponse<void>) => r.body as void)
     );
   }
 

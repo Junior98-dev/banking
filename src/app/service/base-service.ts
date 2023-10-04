@@ -9,6 +9,7 @@ import { ApiConfiguration } from './api-configuration';
  */
 @Injectable()
 export class BaseService {
+  static DeletePath: string;
   constructor(
     protected config: ApiConfiguration,
     protected http: HttpClient

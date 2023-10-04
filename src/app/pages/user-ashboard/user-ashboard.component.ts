@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FirstService } from 'src/app/service/first-service/first-service.service';
+import { TransactionControllerService } from 'src/app/service/services';
 
 @Component({
   selector: 'app-user-ashboard',
@@ -8,12 +9,11 @@ import { FirstService } from 'src/app/service/first-service/first-service.servic
 })
 export class UserAshboardComponent implements OnInit{
 
-  constructor(private firstservice: FirstService){}
+  constructor( private transaction: TransactionControllerService){}
 
-  ngOnInit(): void {
-    this.firstservice.findAlltransactions()
-    .subscribe(
-      (data) => {console.log('liste des transactions :', data)}
-    ) 
+  ngOnInit(): void { 
+    this.transaction.findAll1().subscribe(
+      (data) => {console.log(data)}
+    )
   }
 }

@@ -20,7 +20,6 @@
             "outputPath": "dist/banking-font",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "proxyConfig": "src/proxy.conf.json",
             "polyfills": [
               "zone.js"
             ],
