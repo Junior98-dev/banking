@@ -16,7 +16,8 @@ import { ManagerUsersComponent } from './admin/manager-users/manager-users.compo
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MainAdminPageComponent } from './admin/main-admin-page/main-admin-page.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http'
+import { HttpInterceptorService } from './service/http-interceptor/http-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,11 @@ import {HttpClient, HttpClientModule} from '@angular/common/http'
     HttpClientModule
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    },
     HttpClient
   ],
   bootstrap: [AppComponent]
