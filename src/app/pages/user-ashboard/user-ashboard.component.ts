@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AddressControllerService, TransactionControllerService } from 'src/app/service/services';
+
 
 @Component({
   selector: 'app-user-ashboard',
@@ -8,11 +8,9 @@ import { AddressControllerService, TransactionControllerService } from 'src/app/
 })
 export class UserAshboardComponent implements OnInit{
 
-  constructor( private transaction: AddressControllerService){}
+  constructor(){}
 
   ngOnInit(): void { 
-    this.transaction.findAll3().subscribe(
-      (data) => {console.log(data)}
-    )
+    
   }
 }

@@ -4,43 +4,46 @@
         <form>
             <div class="card p-4 z-depth">
 
-                <div class="text-center mb-6">
+                <div class="text-center mb-3">
                     <h3>Inscription</h3>
                 </div>
-
+               
+                <div class="alert alert-danger" role="alert mb-4" *ngIf="errorMessages.length">
+                    <p *ngFor="let msg of errorMessages">{{msg}}</p>
+                </div>
                 <!-- 2 column grid layout with text inputs for the first and last names -->
                 <div class="row mb-4">
                 <div class="col">
                     <div class="mb-form">
-                    <input type="text" id="form3Example1" class="form-control" placeholder="Prénom"/>
+                    <input  type="text" id="FirstName" class="form-control" placeholder="Prénom" name="firstname" [(ngModel)]="userDto.firstname"/>
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-form">
-                        <input type="text" id="form3Example2" class="form-control" placeholder="Nom"/>
+                        <input type="text" id="lastname" class="form-control" placeholder="Nom" name="lastname" [(ngModel)]="userDto.lastname"/>
                     </div>
                 </div>
                 </div>
             
                 <!-- Email input -->
                 <div class="mb-form mb-4">
-                    <input type="email" id="form3Example3" class="form-control" placeholder="Adresse email"/>
+                    <input type="email" id="email" class="form-control" placeholder="Adresse email" name="email"[(ngModel)]="userDto.email"/>
                 </div>
-                <div class="mb-form mb-4">
+                <!--<div class="mb-form mb-4">
                     <input type="email" id="form3Example3" class="form-control" placeholder="Confirmez votre adresse email"/>
-                </div>
+                </div>-->
             
                 <!-- Password input -->
                 <div class="mb-form mb-4">
-                    <input type="password" id="form3Example4" class="form-control" placeholder="Mot de passe"/>
+                    <input type="password" id="password" class="form-control" placeholder="Mot de passe" name="password" [(ngModel)]="userDto.password"/>
                 </div>
-                <div class="mb-form mb-4">
+                <!--<div class="mb-form mb-4">
                     <input type="password" id="form3Example4" class="form-control" placeholder="Confirmez le mot de passe"/>
-                </div>
+                </div>-->
             
             
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Créer</button>
+                <button type="submit" class="btn btn-primary btn-block mb-4" (click)="register()">Créer</button>
             
 
                 <!-- Register buttons -->
@@ -49,12 +52,5 @@
                 </div>
             </div>
           </form>
-
-
-
-
-
-
-
     </div>
 </div>
