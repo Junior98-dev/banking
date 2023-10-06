@@ -12,10 +12,12 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { MainAdminPageComponent } from './admin/main-admin-page/main-admin-page.component';
 import { ManagerUsersComponent } from './admin/manager-users/manager-users.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
+import { ConfirmRegisterComponent } from './pages/confirm-register/confirm-register.component';
 
 const routes: Routes = [
 {path: 'login', component: LoginComponent},
 {path: 'register', component: RegisterComponent},
+{path: 'confirm-register', component: ConfirmRegisterComponent},
 {path: 'user',
 component: MainPageComponent,
 children : [

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserDto } from 'src/app/service/models';
 import { AuthenticationControllerService } from 'src/app/service/services';
 
@@ -18,7 +19,10 @@ export class RegisterComponent implements OnInit{
 
   errorMessages: Array<string> = [];
 
-  constructor(private authService: AuthenticationControllerService){}
+  constructor(
+      private authService: AuthenticationControllerService,
+      private router: Router
+    ){}
 
   ngOnInit(): void {
       
@@ -29,12 +33,11 @@ export class RegisterComponent implements OnInit{
       body: this.userDto
     }
     ).subscribe({
-      next: (data) => {
-        console.log(data);
+      next: async (data) => {
+        await this.router.navigate(['/confirm-register']);
       },
       error: (err) => {
-        this.errorMessages = err.error.validationErrors;
-        
+        this.errorMessages = err.error.validationErrors;  
       }
     })
   }

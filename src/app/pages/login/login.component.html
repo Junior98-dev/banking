@@ -7,25 +7,26 @@
                 <div class="text-center mb-4">
                     <h3>Connexion</h3>
                 </div>
-
+                <div class="alert alert-danger" role="alert mb-4" *ngIf="errorMessages.length">
+                    <p *ngFor="let msg of errorMessages">{{msg}}</p>
+                </div>
                 <!-- Email input -->
                 <div class="mb-form mb-4">
-                    <label for=""></label>
-                    <input type="email" id="form2Example1" class="form-control" placeholder="Adresse email"/>
+                    <input type="email" id="email" class="form-control" placeholder="Adresse email" name="email" [(ngModel)]="authRequest.email"/>
                 </div>
             
                 <!-- Password input -->
                 <div class="mb-form mb-4">
-                    <input type="password" id="form2Example2" class="form-control" placeholder="Mot de passe" />
+                    <input type="password" id="password" class="form-control" placeholder="Mot de passe" name="password" [(ngModel)]="authRequest.password"/>
                 </div>
 
             
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">Se connecter</button>
+                <button type="submit" class="btn btn-primary btn-block mb-4" (click)="login()">Se connecter</button>
             
                 <!-- Register buttons -->
                 <div class="text-center">
-                    <p>Créer un compte? <a href="#">Register</a></p>
+                    <p>Créer un compte? <a routerLink="/register">Register</a></p>
                 </div>
             </div>
         </form>
