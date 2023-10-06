@@ -19,6 +19,7 @@ export class TokenGuardService implements CanActivate{
    const jwtHelper = new JwtHelperService();
    const isTokenExpired = jwtHelper.isTokenExpired(token);
    if(isTokenExpired){
+    localStorage.clear();
     this.router.navigate(['/login']);
     return false;
    }

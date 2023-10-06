@@ -14,11 +14,16 @@ import { ManagerUsersComponent } from './admin/manager-users/manager-users.compo
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { ConfirmRegisterComponent } from './pages/confirm-register/confirm-register.component';
 import { TokenGuardService } from './service/guard/token-guard/token-guard.service';
+import { AdminGuardService } from './service/guard/admin-guard/admin-guard.service';
+import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 
 const routes: Routes = [
 {path: 'login', component: LoginComponent},
 {path: 'register', component: RegisterComponent},
 {path: 'confirm-register', component: ConfirmRegisterComponent},
+{path: 'access-denied', component: AccessDeniedComponent},
+
+
 {path: 'user',
 component: MainPageComponent,
 canActivate: [TokenGuardService],
@@ -37,7 +42,7 @@ children : [
 
 {path: 'admin',
 component: MainAdminPageComponent,
-canActivate: [TokenGuardService],
+canActivate: [TokenGuardService, AdminGuardService],
 children: [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: AdminDashboardComponent},

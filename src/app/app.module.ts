@@ -20,6 +20,7 @@ import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/h
 import { HttpInterceptorService } from './service/http-interceptor/http-interceptor.service';
 import { FormsModule } from '@angular/forms';
 import { ConfirmRegisterComponent } from './pages/confirm-register/confirm-register.component';
+import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ConfirmRegisterComponent } from './pages/confirm-register/confirm-regis
     MainAdminPageComponent,
     AdminDashboardComponent,
     ConfirmRegisterComponent,
+    AccessDeniedComponent,
     
   ],
   imports: [

@@ -28,14 +28,14 @@ export class LoginComponent implements OnInit{
     this.authService.authenticate({
       body: this.authRequest
     }).subscribe({
-      next: (data) => {
+      next: async (data) => {
         localStorage.setItem('token', data.token as string);
         const helper = new JwtHelperService();
         const decodedToken = helper.decodeToken(data.token as string);
         if(decodedToken.authorities[0].authority === 'ROLE_ADMIN'){
-          this.router.navigate(['admin/dashboard']);
+          await this.router.navigate(['admin/dashboard']);
         }else{
-          this.router.navigate(['user/dashboard']);
+          await this.router.navigate(['user/dashboard']);
         }
       },
       error: (err) => {
