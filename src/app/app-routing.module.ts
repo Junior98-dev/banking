@@ -13,6 +13,7 @@ import { MainAdminPageComponent } from './admin/main-admin-page/main-admin-page.
 import { ManagerUsersComponent } from './admin/manager-users/manager-users.component';
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { ConfirmRegisterComponent } from './pages/confirm-register/confirm-register.component';
+import { TokenGuardService } from './service/guard/token-guard/token-guard.service';
 
 const routes: Routes = [
 {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
 {path: 'confirm-register', component: ConfirmRegisterComponent},
 {path: 'user',
 component: MainPageComponent,
+canActivate: [TokenGuardService],
 children : [
   {path: '', redirectTo : 'dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: UserAshboardComponent},
@@ -35,6 +37,7 @@ children : [
 
 {path: 'admin',
 component: MainAdminPageComponent,
+canActivate: [TokenGuardService],
 children: [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: AdminDashboardComponent},

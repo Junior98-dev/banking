@@ -31,9 +31,15 @@ export class LoginComponent implements OnInit{
       next: (data) => {
         localStorage.setItem('token', data.token as string);
         const helper = new JwtHelperService();
-        const decodedToken = helper.decodeToken();
+        const decodedToken = helper.decodeToken(data.token as string);
+        if(decodedToken.authorities[0].authority === 'ROLE_ADMIN'){
+          this.router.navigate(['admin/dashboard']);
+        }else{
+          this.router.navigate(['user/dashboard']);
+        }
       },
       error: (err) => {
+        console.log(err);
         this.errorMessages.push(err.error.errorMessage);
       }
     });
