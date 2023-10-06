@@ -10,7 +10,7 @@
     <div class="card">
 
         
-        <table class="table table-striped">
+        <table class="table table-bordered text-center">
             <thead>
             <tr>
                 <th scope="col">Date</th>
@@ -20,22 +20,23 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
+            <tr *ngFor="let trs of transactions">
+                <th scope="row">{{trs.transactionDate}}</th>
+                <td>
+                    <span [class.text-danger]="trs.type === 'Transfert'"
+                    [class.text-success]="trs.type === 'depot'"
+                    >
+                    {{trs.amount}}
+                    </span>
+                </td>
+                <td>{{trs.destinationIban}}</td>
+                <td>
+                    <span class="badge" [class.bg-warning]="trs.type === 'Transfert'"
+                    [class.bg-success]="trs.type === 'depot'"
+                    >
+                        {{trs.type}}
+                    </span>
+                </td>
             </tr>
             </tbody>
         </table>
