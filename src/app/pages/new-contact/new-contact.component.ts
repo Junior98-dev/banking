@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HelperService } from 'src/app/service/helper/helper.service';
 import { ContactDto } from 'src/app/service/models';
 import { ContactControllerService } from 'src/app/service/services';
@@ -17,11 +17,21 @@ export class NewContactComponent implements OnInit{
   constructor(
     private contactService: ContactControllerService,
     private helperService: HelperService,
-    private router: Router
+    private router: Router,
+    private activateRoute: ActivatedRoute
     ){}
 
   ngOnInit(): void {
-    
+    const contactId = this.activateRoute.snapshot.params['idContact'];
+    if(contactId){
+      this.contactService.findById2({
+        'contact-id': this.activateRoute.snapshot.params['idContact']
+      }).subscribe({
+        next: (data) => {
+          this.contact = data;
+        }
+      });
+    }
   }
 
   save(){
