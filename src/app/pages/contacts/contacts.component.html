@@ -15,31 +15,17 @@
             <tr>
                 <th scope="col">Prénoms</th>
                 <th scope="col">Nom</th>
+                <th scope="col">Email</th>
                 <th scope="col">IBAN</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td class="cursor-pointer">
-                    <em class="fa fa-edit text-success"></em>&nbsp; | &nbsp;<em class="fa fa-trash text-danger"></em>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td class="cursor-pointer">
-                    <em class="fa fa-edit text-success"></em>&nbsp; | &nbsp;<em class="fa fa-trash text-danger"></em>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Mark</td>
-                <td>Otto</td>
+            <tr *ngFor="let ct of contacts">
+                <th scope="row">{{ct.firstname}}</th>
+                <td>{{ct.lastname}}</td>
+                <td>{{ct.email}}</td>
+                <td>{{ct.iban}}</td>
                 <td class="cursor-pointer">
                     <em class="fa fa-edit text-success"></em>&nbsp; | &nbsp;<em class="fa fa-trash text-danger"></em>
                 </td>
