@@ -37,4 +37,20 @@ export class ManagerUsersComponent implements OnInit{
     }
   }
 
+  changeUserState(active : boolean | undefined, id: number | undefined){
+    if(active){
+      this.userService.valideAccount({
+        'user-id': id as number
+      }).subscribe({
+        next: () =>{}
+      });
+    }else{
+      this.userService.invalideAccount({
+        'user-id': id as number
+      }).subscribe({
+        next: () =>{}
+      });
+    }
+  }
+
 }
