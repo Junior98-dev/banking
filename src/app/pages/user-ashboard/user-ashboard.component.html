@@ -1,25 +1,14 @@
 <div class="container mt-4">
 
-    <div class="d-flex flex-row mb-5">
-
-        <div class="card  col text-center">
+    <div class="d-flex justify-content-between">
+      <div class="col-sm-3 mb-4 text-center" *ngFor="let list of accountInfoList">
+        <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Solde</h5>
-              <p class="card-text">8 968.41€</p>
+              <h5 class="card-title">{{list.title}}</h5>
+              <p class="card-text">{{list.amount}}</p>
             </div>
         </div>
-        <div class="card  col text-center">
-            <div class="card-body">
-              <h5 class="card-title">Transfert le plus élèvé</h5>
-              <p class="card-text">5 8690 €</p>
-            </div>
-        </div>
-        <div class="card  col text-center">
-            <div class="card-body">
-              <h5 class="card-title">Dépot le plus élèvé</h5>
-              <p class="card-text">5 8690 €</p>
-            </div>
-        </div>
+      </div>
         
     </div>
 

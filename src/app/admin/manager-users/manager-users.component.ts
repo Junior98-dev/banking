@@ -11,6 +11,8 @@ export class ManagerUsersComponent implements OnInit{
   
   customers: Array<UserDto> = [];
   showInactiveUserOnly = false;
+  userIdToUpdate = -1;
+  updateState: boolean | undefined;
   
   constructor(
     private userService: UserControllerService
@@ -37,20 +39,36 @@ export class ManagerUsersComponent implements OnInit{
     }
   }
 
-  changeUserState(active : boolean | undefined, id: number | undefined){
-    if(active){
+  changeUserState(active: boolean | undefined, id: number | undefined) {
+    this.userIdToUpdate = id as number;
+    this.updateState = active;
+  }
+
+  updateUserState() {
+    if (this.updateState) {
       this.userService.valideAccount({
-        'user-id': id as number
+        'user-id': this.userIdToUpdate as number
       }).subscribe({
-        next: () =>{}
+        next: () =>{
+          this.findAllCustomers();
+        }
       });
-    }else{
+    } else {
       this.userService.invalideAccount({
-        'user-id': id as number
+        'user-id': this.userIdToUpdate as number
       }).subscribe({
         next: () =>{}
       });
     }
+  }
+
+  cancelUpdate() {
+    const user = this.customers.find((c) =>c.id === this.userIdToUpdate);
+    if (user) {
+      user.active = !user.active
+    }
+    this.userIdToUpdate = -1;
+    this.updateState = undefined
   }
 
 }

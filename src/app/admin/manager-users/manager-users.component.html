@@ -41,7 +41,9 @@
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" 
                             [(ngModel)]="cus.active" 
                             [checked]="cus.active"
-                            (change)="changeUserState(cus.active, cus.id)" />&nbsp; 
+                            (change)="changeUserState(cus.active, cus.id)"
+                            data-mdb-toggle="modal" data-mdb-target="#exampleModal"
+                            />&nbsp; 
                         </div>
                         | &nbsp;<em class="fa fa-trash text-danger"></em>
                     </div>
@@ -59,13 +61,13 @@
           <h5 class="modal-title" id="exampleModalLabel">Confirmer</h5>
           <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">Voudriez-vous vraiment supprimer ce contact</div>
+        <div class="modal-body">Voudriez-vous vraiment {{updateState ? 'activer' : 'désactiver'}} cet utilisateur</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-link" data-mdb-dismiss="modal">
+          <button (click)="cancelUpdate()" type="button" class="btn btn-link" data-mdb-dismiss="modal">
             <em class="fas fa-times"></em>&nbsp;
                 Annuler
             </button>
-          <button  type="button" class="btn btn-danger" data-mdb-dismiss="modal">
+          <button (click)="updateUserState()" type="button" class="btn btn-danger" data-mdb-dismiss="modal">
             <em class="fas fa-trash"></em>&nbsp;
             Supprimer</button>
         </div>
