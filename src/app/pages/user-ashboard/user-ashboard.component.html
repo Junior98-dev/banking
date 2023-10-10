@@ -12,12 +12,24 @@
         
     </div>
 
-    <div class="">
-        <div class="card  col text-center">
-            <div class="card-body">
-              <h5 class="card-title">Dépot le plus élèvé</h5>
-              <p class="card-text">5 8690 €</p>
-            </div>
+    <div class="card p-3">
+
+        <div class="d-flex flex-row align-items-start mb-3">
+          <div class="me-3">
+            <label for="start-date" class="from-label">Start date</label>
+            <input type="text" name="" id="start-date" class="form-control" placeholder="--/--/---">
+          </div>
+          <div class="">
+            <label for="end-date" class="from-label">End date</label>
+            <input type="text" name="" id="end-date" class="form-control" placeholder="--/--/---">
+          </div>
+        </div>
+
+
+        <div class="">
+          <div style="width: 600px;">
+            <canvas id="myChart"></canvas>
+          </div>
         </div>
     </div>
 </div>

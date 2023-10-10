@@ -21,6 +21,8 @@ import { HttpInterceptorService } from './service/http-interceptor/http-intercep
 import { FormsModule } from '@angular/forms';
 import { ConfirmRegisterComponent } from './pages/confirm-register/confirm-register.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
+import { NgChartsModule } from 'ng2-charts';
+
 
 @NgModule({
   declarations: [
@@ -40,13 +42,13 @@ import { AccessDeniedComponent } from './pages/access-denied/access-denied.compo
     AdminDashboardComponent,
     ConfirmRegisterComponent,
     AccessDeniedComponent,
-    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgChartsModule
   ],
   providers: [
     {
