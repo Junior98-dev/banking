@@ -14,22 +14,38 @@
 
     <div class="card p-3">
 
-        <div class="d-flex flex-row align-items-start mb-3">
-          <div class="me-3">
-            <label for="start-date" class="from-label">Start date</label>
-            <input type="text" name="" id="start-date" class="form-control" placeholder="--/--/---">
+        <div class="d-flex flex-row align-items-start mb-5">
+          <div class="d-flex me-4">
+            <div class="me-2">
+              <label for="start-date" class="from-label">Start date : </label>
+            </div>
+            <div>
+              <input type="date" name="" id="start-date" class="form-control" placeholder="--/--/---">
+            </div>
           </div>
-          <div class="">
-            <label for="end-date" class="from-label">End date</label>
-            <input type="text" name="" id="end-date" class="form-control" placeholder="--/--/---">
+          <div class="d-flex">
+            <div class="me-2">
+              <label for="end-date" class="from-label">End date : </label>
+            </div>
+            <div>
+              <input type="date" name="" id="end-date" class="form-control" placeholder="--/--/---">
+            </div>
           </div>
         </div>
-
 
         <div class="">
-          <div style="width: 600px;">
-            <canvas id="myChart"></canvas>
+          <div class="">
+            <div class="d-flex justify-content-between">
+              <div style="width: 350px;">
+                <canvas id="Chart"></canvas>
+              </div>
+              <div style="width: 700px;">
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
           </div>
+
         </div>
-    </div>
+  </div>
+        
 </div>

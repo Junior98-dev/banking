@@ -22,6 +22,8 @@ import { FormsModule } from '@angular/forms';
 import { ConfirmRegisterComponent } from './pages/confirm-register/confirm-register.component';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { NgChartsModule } from 'ng2-charts';
+import { DpDatePickerModule } from 'ng2-date-picker';
+
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { NgChartsModule } from 'ng2-charts';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgChartsModule
+    NgChartsModule,
+    DpDatePickerModule
+    
   ],
   providers: [
     {

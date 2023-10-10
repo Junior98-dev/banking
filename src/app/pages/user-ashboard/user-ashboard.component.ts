@@ -3,7 +3,7 @@ import { lastValueFrom } from 'rxjs';
 import { HelperService } from 'src/app/service/helper/helper.service';
 import { StatisticsControllerService } from 'src/app/service/services';
 import { IBalance } from './IBalance';
-import { Chart, ChartDataset} from 'chart.js';
+import { Chart} from 'chart.js';
 
 
 @Component({
@@ -21,6 +21,8 @@ export class UserAshboardComponent implements OnInit {
   data:any;
   dataamount:any[] = [];
   datadate:any[] = [];
+
+  
   
   
 
@@ -51,6 +53,7 @@ export class UserAshboardComponent implements OnInit {
           }
         }
         this.showChartdata(this.dataamount, this.datadate);
+        this.Chartdata(this.dataamount, this.datadate);
 
       }
       
@@ -63,6 +66,28 @@ export class UserAshboardComponent implements OnInit {
     //console.log(dataamount);
     new Chart("myChart", {
       type: 'line',
+      data: {
+        labels: datadate,
+        datasets: [{
+          label: 'Somme des transaction par jour',
+          data: dataamount,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+
+  Chartdata(dataamount:any, datadate:any){
+    //console.log(dataamount);
+    new Chart("Chart", {
+      type: 'doughnut',
       data: {
         labels: datadate,
         datasets: [{
@@ -111,14 +136,5 @@ export class UserAshboardComponent implements OnInit {
       }
     ]
   }
-
-
-
-
-
-
-
-
-
-
+ 
 }
